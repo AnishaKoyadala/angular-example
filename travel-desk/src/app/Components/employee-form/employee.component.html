@@ -1,0 +1,145 @@
+<div class="wrapper">
+	<app-sidebar></app-sidebar>
+
+
+	<div class="main-panel">
+		<app-main-panel-navbar></app-main-panel-navbar>
+		<div class="content">
+			<div class="container-fluid">
+				<!-- List of User start -->
+
+				<div class="row">
+					<div class="col-md-12">
+						<div class="card">
+							<div class="card-header" data-background-color="purple">
+
+								<h4 class="title pull-right">
+									<span (click)="componantCall('loadAll')"
+										style="text-left: right; cursor: pointer;" class="title">Show</span>
+									<!-- ! <span (click)="componantCall('openForm',null)"
+										style="text-align: right; cursor: pointer;" class="title" *ngIf="formDiv">Add</span> -->
+								</h4>
+								<p class="category" style="font-family: monospace;">{{componentName}}
+									</p>
+
+							</div>
+							<p class="category"
+								style="font-family: monospace; color: #ff0000;"
+								*ngIf="error != ''">{{error}}</p>
+							<p class="category"
+								style="font-family: monospace; color: #23c0d8;"
+								*ngIf="sucess != ''">{{success}}</p>
+
+							<div class="card-content table-responsive" *ngIf="tableDiv">
+								<table class="table">
+									<thead class="text-primary">
+										<th>{{formFeild1}}</th>
+										<th>{{formFeild2}}</th>
+										<th>{{formFeild3}}</th>
+										<th>{{formFeild4}}</th>
+										<th>ACTION</th>
+									</thead>
+									<tbody>
+										<tr *ngFor="let data of formData;">
+											<td>{{data.empId}}</td>
+											<td>{{data.empEmail}}</td>
+											<td>{{data.empName}}</td>
+											<td>{{data.empProjectName}}</td>
+											<!-- <td *ngIf="field.isEnabled;InActive">Active</td> -->
+											<td class="td-actions text-right">
+												<button type="button" rel="tooltip" title=""
+													class="btn btn-primary btn-simple btn-xs"
+													data-original-title="Edit Task">
+													<i class="material-icons"
+														(click)="componantCall('openForm',data)">edit</i>
+													<div class="ripple-container"></div>
+												</button>
+												<button type="button" rel="tooltip" title=""
+													class="btn btn-danger btn-simple btn-xs"
+													data-original-title="Remove">
+													<i class="material-icons">close</i>
+												</button>
+											</td>
+										</tr>
+
+									</tbody>
+								</table>
+							</div>
+
+
+							<div class="card-content" *ngIf="formDiv">
+
+								<form class="form-horizontal" [formGroup]="htmlForm"
+									(ngSubmit)="componantCall('update')">
+									<div class="row">
+
+										
+										<div class="col-md-5">
+											<!--- First Name Block -->
+											<div class="form-group label-floating">
+												<label for="inputEmpId" class="control-label">{{formFeild1}}</label>
+												<input type="text" class="form-control" id="inputEmpId"
+													formControlName="empId" disabled="disabled"/>
+												
+											</div>
+
+									
+											<!--- First Name Block -->
+											<div class="form-group label-floating">
+												<label for="inputEmpName" class="control-label">{{formFeild3}}</label>
+												<input type="text" class="form-control" id="inputEmpName"
+													formControlName="empName" disabled="disabled"/>
+												
+											</div>
+
+										</div>
+										<div class="col-md-5">
+											<!--- First Name Block -->
+											<div class="form-group label-floating">
+												<label for="inputEmpProjectName" class="control-label">{{formFeild4}}</label>
+												<input type="text" class="form-control" id="inputEmpProjectName"
+													formControlName="empProjectName" />
+												
+											</div>
+
+										</div>
+										
+										
+										
+										
+										
+										
+										
+
+
+
+										
+
+
+
+
+
+
+									</div>
+									<button type="submit" class="btn btn-primary pull-right">
+										Complete</button>
+									<div class="clearfix"></div>
+								</form>
+							</div>
+
+						</div>
+					</div>
+					
+				</div>
+
+				<!-- List of User end -->
+				<!--  Edit Div -->
+
+			</div>
+		</div>
+
+		<app-footer-bar></app-footer-bar>
+
+
+	</div>
+</div>

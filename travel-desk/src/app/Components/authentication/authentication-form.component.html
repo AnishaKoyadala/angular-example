@@ -1,0 +1,87 @@
+
+
+<div style="text-align:center">
+<div class="col-sm-7  custom-row">
+		<p>
+			<span><a
+				onclick="document.getElementById('id01').style.display='block'"
+				style="width: auto;">Login</a></span>
+		</p>
+	</div>
+</div>
+
+<div id="id01" class="modal">
+
+	<form class="form-horizontal" [formGroup]="authenticationForm"
+		(ngSubmit)="authenticateUser()">
+
+
+		<div class="container" style="background-color: #f1f1f1">
+			<fieldset>
+				<legend></legend>
+				<div class="imgcontainer">
+
+					<img src="../assets/img/img_avatar2.png" alt="Avatar"
+						class="avatar">
+				</div>
+				<div style="color: #ff0000;" *ngIf="error != ''">{{error}}</div>
+				<!--- Email Block -->
+				<div class="form-group">
+					<label for="inputEmail" class="control-label">UserName</label>
+					<div>
+						<input type="text" class="form-control" id="inputEmail"
+							formControlName="email" placeholder="UserName" />
+					</div>
+					<div class="text-danger"
+						*ngIf="authenticationForm.get('email').dirty || authenticationForm.get('email').touched">
+						<div *ngIf="authenticationForm.get('email').hasError('required')">UserName
+							field can't be blank</div>
+
+					</div>
+				</div>
+				<!--- Password Block -->
+				<div formGroupName="password">
+					<div class="form-group">
+						<label for="inputPassword" class="control-label">Password</label>
+						<div>
+							<input type="password" formControlName="pwd" id="inputPassword"
+								class="form-control" placeholder="Password" />
+						</div>
+					</div>
+					<!-- Password error block -->
+					<div
+						*ngIf="authenticationForm.get('password').get('pwd').dirty || authenticationForm.get('password').get('pwd').touched"
+						class="text-danger">
+						<div
+							*ngIf="authenticationForm.get('password').get('pwd').hasError('required')">Password
+							field can't be blank</div>
+						<div
+							*ngIf="authenticationForm.get('password').get('pwd').hasError('minlength')">Password
+							needs to be more than 8 characters</div>
+
+					</div>
+
+
+				</div>
+				<!--- Buttons Block -->
+				<button type="submit" [disabled] ="!authenticationForm.valid"
+					class="btn btn-primary">Login</button>
+				<button type="button"
+					onclick="document.getElementById('id01').style.display='none'"
+					class="btn btn-default">Cancel</button>
+				<label> <input type="checkbox" checked="checked"
+					name="remember"> Remember me
+				</label>
+
+			</fieldset>
+		</div>
+
+		<!-- <div class="container" style="background-color:#f1f1f1">
+      <p><span ><a href="/signup">don't have account?</a></span></p>
+       <p><span class="psw">Forgot <a href="#">password?</a></span></p>
+	  
+    </div> -->
+	</form>
+</div>
+
+
