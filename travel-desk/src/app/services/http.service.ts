@@ -26,7 +26,6 @@ export class HttpService {
     return Observable.throw(err.error.message || 'Error Occurred While Fetching the data Or Api down');
   }
   serviceCall(methodType, apiUrl, requestBody): Observable<ApiResponse> {
-
     switch (methodType) {
       case 'GET':
         return this.http.get<any>(apiUrl).catch(this.handleError);

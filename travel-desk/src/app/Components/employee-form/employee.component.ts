@@ -34,7 +34,7 @@ export class EmployeeComponent implements OnInit {
     private apiService: ApiService,
     private tokenService: TokenService) {
     this.error = '';
-    this.apiUri="/assets/data/employee.json"
+    this.apiUri='/assets/data/employee.json';
   }
   ngOnInit() {
     this.validate();
@@ -54,7 +54,6 @@ export class EmployeeComponent implements OnInit {
 
 
   totalRecords() {
-
     this.apiService.load(this.apiUri,null, null, null).subscribe((apiResponse) => {
    
       if (apiResponse.statusCode === '200') {
@@ -74,14 +73,12 @@ export class EmployeeComponent implements OnInit {
 
 
   openForm(fieldValue: any) {
-  	
     if (fieldValue != null && fieldValue !== 'null') {
       this.setValue(fieldValue);
     }
 
   }
   setValue(data) {
-  debugger;
     this.htmlForm.controls['empId'].setValue(data.empId);
     this.htmlForm.controls['empName'].setValue(data.empName);
     this.htmlForm.controls['empProjectName'].setValue(data.empProjectName);
@@ -103,7 +100,7 @@ export class EmployeeComponent implements OnInit {
 
   componantCall(action: string, fieldValue: any) {
     this.tableDiv = true;
-    if (this.tokenService.isAuthenticated()) {
+   // if (this.tokenService.isAuthenticated()) {
       if (action === this.tokenService.getAll()) {
         this.formDiv = false;
         this.totalRecords();
@@ -122,7 +119,7 @@ export class EmployeeComponent implements OnInit {
         this.openForm(fieldValue);
 
       }
-    }
+    //}
 
   }
 
